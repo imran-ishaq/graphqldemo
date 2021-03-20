@@ -1,0 +1,45 @@
+type Query {
+    customerById(id: ID!): Customer
+}
+
+type Mutation {
+    createOrder(order: CreateOrderInput!): Order!
+    createCustomer(customer: CreateCustomerInput!): Customer!
+}
+
+
+
+
+
+input CreateOrderInput {
+    customerId: ID!
+    productId: ID!
+    quantity: Int!
+}
+input CreateCustomerInput {
+      id: ID
+    name: String!
+    email: String!
+}
+type Customer {
+    id: ID!
+    name: String!
+    email: String!
+    orders: [Order]
+}
+
+type Order {
+    id: ID!
+    customer: Customer!
+    product: Product!
+    quantity: Int!
+    status: String!
+}
+
+type Product {
+    id: ID!
+    name: String
+    description: String
+    price: String
+}
+
